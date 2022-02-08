@@ -1,15 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
+  text-align: left;
+  margin: 0.5em;
 }
 
 .Header {
-  border: 2px solid purple;
+  background-color: #a72608;
+  color: #e6eed6;
+  padding: 20px;
+  width: 100%;
+  margin: 1rem;
+  border-radius: 0.4em;
 }
 
 .Nav {
-  border: 2px solid red;
+  font-size: 1.2em;
+  text-align: center;
 }
 
-.Reviews {
-  border: 2px solid blue;
+.Nav-ul_categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.Nav-li_categories {
+  list-style-type: none;
+  display: inline;
+  padding: 0.1em 0.5em;
+  flex-grow: 1;
+}
+
+.ReviewsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0.3em;
+}
+
+.ReviewsList__item {
+  flex-direction: column;
+  list-style-type: none;
+  width: 100%;
+  padding: 0 0.5em;
+  margin: 0.3em;
+}
+
+.ReviewCard {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  height: fit-content;
+  border: 1px solid #e6eed6;
+  border-radius: 0.4em;
+  padding: 0.5em;
+  background-color: #dde2c6;
+}
+
+.ReviewCard__category {
+  width: 100%;
+  color: #819263;
+}
+
+.ReviewCard__title {
+  width: 100%;
+}
+
+.ReviewCard__image {
+  width: auto;
+  height: 50px;
+}
+
+.ReviewCard__body {
+  flex-grow: 2;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: auto;
+  width: 200px;
+  padding: 0.5em 0;
 }

@@ -7,3 +7,12 @@ const api = axios.create({
 export function getCategories() {
   return api.get("/categories").then((res) => res.data.categories);
 }
+
+export function getReviews(category) {
+  const params = {
+    sort_by: "votes",
+    order: "desc",
+    category,
+  };
+  return api.get(`/reviews/`, { params });
+}
