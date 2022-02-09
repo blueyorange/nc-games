@@ -6,7 +6,7 @@
 .App {
   text-align: left;
   margin: 0.5em;
-  min-width: 400px;
+  min-width: 350px;
 }
 
 .Header {
@@ -58,6 +58,7 @@
   background-color: white;
   font-size: 0.8em;
   box-shadow: 5px 3px #e6eed6;
+  width: 100%;
 }
 
 .Nav__form:focus {

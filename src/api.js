@@ -14,5 +14,5 @@ export function getReviews(category) {
     order: "desc",
     category,
   };
-  return api.get(`/reviews/`, { params });
+  return api.get(`/reviews/`, { params }).then((res) => res.data.reviews);
 }
