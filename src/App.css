@@ -6,6 +6,7 @@
 .App {
   text-align: left;
   margin: 0.5em;
+  min-width: 200px;
 }
 
 .Header {
@@ -13,7 +14,6 @@
   color: #e6eed6;
   padding: 20px;
   width: 100%;
-  margin: 1rem;
   border-radius: 0.4em;
 }
 
@@ -51,9 +51,10 @@
 }
 
 .ReviewCard {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  display: grid;
+  width: auto;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 1.2em 2.2em 1fr 1fr;
   height: fit-content;
   border: 1px solid #e6eed6;
   border-radius: 0.4em;
@@ -61,26 +62,46 @@
   background-color: #dde2c6;
 }
 
+.ReviewCard:hover {
+  background-color: e6eed6;
+}
+
 .ReviewCard__category {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
   width: 100%;
   color: #819263;
 }
 
 .ReviewCard__title {
+  grid-column: 1/3;
+  grid-row: 2 / 3;
   width: 100%;
+  font-size: 1.6em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ReviewCard__image {
-  width: auto;
-  height: 50px;
+  grid-column: 1/2;
+  grid-row: 3/5;
+  width: 90px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.ReviewCard__owner {
+}
+
+.ReviewCard__owner_name {
+  font-style: italic;
 }
 
 .ReviewCard__body {
-  flex-grow: 2;
+  grid-row: 4 / 5;
+  grid-column: 2/3;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  height: auto;
-  width: 200px;
-  padding: 0.5em 0;
 }
