@@ -17,6 +17,11 @@
   border-radius: 0.4em;
 }
 
+.Header__link {
+  text-decoration: none;
+  color: #e6eed6;
+}
+
 .Nav {
   display: flex;
   flex-direction: column;
@@ -124,6 +129,7 @@
 
 .ReviewCard:hover {
   background-color: #e6eed6;
+  cursor: pointer;
 }
 
 .ReviewCard__category {
@@ -133,7 +139,12 @@
   color: #819263;
 }
 
+.ReviewCard__category:hover {
+  color: #090c02;
+}
+
 .ReviewCard__title {
+  color: #090c02;
   grid-column: 1/3;
   grid-row: 2/3;
   width: 100%;

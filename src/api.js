@@ -16,3 +16,7 @@ export function getReviews(category) {
   };
   return api.get(`/reviews/`, { params }).then((res) => res.data.reviews);
 }
+
+export function getUser(username) {
+  return api.get(`/users/${username}`).then((res) => res.data.user);
+}
