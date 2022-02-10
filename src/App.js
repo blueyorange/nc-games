@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Reviews from "./components/Reviews";
 import UserPage from "./components/UserPage";
+import ReviewPage from "./components/ReviewPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/reviews/:category" element={<Reviews />} />
           <Route path="/users/:username" element={<UserPage />} />
+          <Route path="/review/:review_id" element={<ReviewPage />} />
         </Routes>
       </div>
     </BrowserRouter>

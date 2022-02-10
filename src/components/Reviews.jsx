@@ -22,9 +22,9 @@ export default function Reviews() {
   }, [searchParams]);
 
   return (
-    <div className="Reviews">
+    <main className="Reviews">
       <Nav />
       <ReviewsList reviews={reviews} />
-    </div>
+    </main>
   );
 }

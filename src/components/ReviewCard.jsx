@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function ReviewCard({ review }) {
   const {
     title,
@@ -9,9 +9,14 @@ export default function ReviewCard({ review }) {
     votes,
     comment_count,
   } = review;
+  const navigate = useNavigate();
+
   return (
-    <div className="ReviewCard">
-      <Link to={`?category=${category}`} className="ReviewCard__category">
+    <div
+      onClick={() => navigate(`/review/${review.review_id}`)}
+      className="ReviewCard"
+    >
+      <Link to={`/?category=${category}`} className="ReviewCard__category">
         {category}
       </Link>
       <h2 className="ReviewCard__title">{title}</h2>
