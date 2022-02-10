@@ -36,3 +36,9 @@ export function voteReview(review_id) {
     .patch(`/reviews/${review_id}/`, { inc_votes: 1 })
     .then((res) => res.data.review);
 }
+
+export function voteComment(comment_id) {
+  return api
+    .patch(`/comments/${comment_id}/`, { inc_votes: 1 })
+    .then((res) => res.data.comment);
+}

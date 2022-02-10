@@ -1,12 +1,18 @@
 import { useState } from "react";
+import { voteComment } from "../api";
 
 export default function Comment({ comment }) {
-  const { avatar_url, author, body, created_at } = comment;
+  const { avatar_url, author, body, created_at, comment_id } = comment;
   const [votes, setVotes] = useState(comment.votes);
 
   function handleVote(e) {
-    setVotes(votes + 1);
-    console.log("no endpoint for comment voting!");
+    const v = votes;
+    setVotes(v + 1);
+    voteComment(comment_id).catch((err) => {
+      console.log(err);
+      alert(err);
+      setVotes(v);
+    });
   }
 
   return (
