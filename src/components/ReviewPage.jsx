@@ -1,19 +1,15 @@
-import { getReviewById, getCommentsByReviewId, voteReview } from "../api";
+import { getReviewById, voteReview } from "../api";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import Comment from "./Comment";
+import Comments from "./Comments";
 
 export default function ReviewPage() {
   const { review_id } = useParams();
   const [review, setReview] = useState({});
-  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getReviewById(review_id).then((reviewFromApi) => {
       setReview(reviewFromApi);
-    });
-    getCommentsByReviewId(review_id).then((commentsFromApi) => {
-      setComments(commentsFromApi);
     });
   }, [review_id]);
 
@@ -32,7 +28,7 @@ export default function ReviewPage() {
       <img
         className="ReviewPage__image"
         src={review.review_img_url}
-        alt="review image"
+        alt={review.owner}
       ></img>
       <h4 className="ReviewPage__owner">
         review by <Link to={`/users/${review.owner}`}>{review.owner}</Link>
@@ -42,9 +38,7 @@ export default function ReviewPage() {
         <button className="ReviewPage__votes-button" onClick={handleVote}>
           {review.votes} 👍
         </button>
-        {comments.map((comment) => {
-          return <Comment key={comment.comment_id} comment={comment}></Comment>;
-        })}
+        <Comments review_id={review_id} />
       </article>
     </main>
   );
