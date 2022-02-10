@@ -176,3 +176,15 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.UserInfo {
+  display: flex;
+  flex-direction: row;
+}
+
+.UserInfo__image {
+  border-radius: 8px;
+  padding: 5px;
+  width: 300px;
+  height: auto;
+}
