@@ -29,6 +29,11 @@ export default function ReviewPage() {
   return (
     <main className="ReviewPage">
       <h2 className="ReviewPage__header">{review.title}</h2>
+      <img
+        className="ReviewPage__image"
+        src={review.review_img_url}
+        alt="review image"
+      ></img>
       <h4 className="ReviewPage__owner">
         review by <Link to={`/users/${review.owner}`}>{review.owner}</Link>
       </h4>
