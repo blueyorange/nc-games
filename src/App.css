@@ -102,6 +102,17 @@
   margin-right: 0.5em;
 }
 
+.Nav__login-status {
+  text-align: right;
+}
+
+.Nav__login-user-image {
+  width: 1.3em;
+  height: 1.3em;
+  margin-left: 0.3em;
+  border-radius: 0.5em;
+  vertical-align: middle;
+}
 .ReviewsList {
   display: flex;
   flex-wrap: wrap;
