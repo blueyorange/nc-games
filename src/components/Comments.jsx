@@ -14,6 +14,7 @@ export default function Comments({ review_id }) {
 
   return (
     <div className="Comments">
+      <h3>Comments</h3>
       {comments.map((comment) => {
         return <Comment key={comment.comment_id} comment={comment}></Comment>;
       })}
