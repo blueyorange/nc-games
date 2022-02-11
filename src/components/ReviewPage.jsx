@@ -1,26 +1,19 @@
 import { getReviewById, voteReview } from "../api";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import VoteButton from "./VoteButton";
 import Comments from "./Comments";
 
 export default function ReviewPage() {
   const { review_id } = useParams();
   const [review, setReview] = useState({});
+  const { votes } = review;
 
   useEffect(() => {
     getReviewById(review_id).then((reviewFromApi) => {
       setReview(reviewFromApi);
     });
   }, [review_id]);
-
-  function handleVote(e) {
-    e.stopPropagation();
-    const { votes } = review;
-    setReview({ ...review, votes: votes + 1 });
-    voteReview(review_id).catch((err) => {
-      setReview({ ...review, votes });
-    });
-  }
 
   return (
     <main className="ReviewPage">
@@ -35,9 +28,8 @@ export default function ReviewPage() {
       </h4>
       <article className="ReviewPage__body">
         <p>{review.review_body}</p>
-        <button className="ReviewPage__votes-button" onClick={handleVote}>
-          {review.votes} 👍
-        </button>
+        <VoteButton votes={votes} updateApiFunc={voteReview} id={review_id} />
+        {votes}!!!
         <Comments review_id={review_id} />
       </article>
     </main>

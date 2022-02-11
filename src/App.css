@@ -236,7 +236,7 @@
   height: 100px;
 }
 
-button {
+.VoteButton {
   border: none;
   padding: 0.7em 1.4em;
   background-color: #a72608;
@@ -244,6 +244,21 @@ button {
   border-radius: 4px;
   width: fit-content;
   margin: 0.5em 0.3em;
+}
+
+.VoteButton:active {
+  border: none;
+  padding: 0.7em 1.4em;
+  background-color: #a72608;
+  color: white;
+  border-radius: 4px;
+  width: fit-content;
+  margin: 0.5em 0.3em;
+}
+
+.VoteButton.voted {
+  transition: background-color 1s;
+  background-color: #819263;
 }
 
 button:hover {
