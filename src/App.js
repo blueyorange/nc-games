@@ -6,6 +6,7 @@ import Reviews from "./components/Reviews";
 import UserPage from "./components/UserPage";
 import ReviewPage from "./components/ReviewPage";
 import { UserContext } from "./contexts/User";
+import LoginStatus from "./components/LoginStatus";
 
 function App() {
   const [user, setUser] = useState({
@@ -19,6 +20,7 @@ function App() {
     <UserContext.Provider value={{ user, setUser }}>
       <BrowserRouter>
         <div className="App">
+          <LoginStatus />
           <Header />
           <Routes>
             <Route path="/" element={<Reviews />} />
