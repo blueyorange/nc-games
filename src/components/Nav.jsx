@@ -1,13 +1,11 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { getCategories } from "../api";
-import { UserContext } from "../contexts/User";
 
 export default function Nav() {
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
-  const { user } = useContext(UserContext);
 
   useEffect(() => {
     getCategories().then((categoriesFromApi) => {
@@ -63,17 +61,6 @@ export default function Nav() {
           })}
         </select>
       </form>
-      <div className="Nav__login-status">
-        Logged in as{" "}
-        <Link to={`/users/${user.username}`}>
-          {user.username}
-          <img
-            src={user.avatar_url}
-            alt={user.username}
-            className="Nav__login-user-image"
-          ></img>
-        </Link>
-      </div>
     </nav>
   );
 }
