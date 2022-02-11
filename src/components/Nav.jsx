@@ -16,7 +16,8 @@ export default function Nav() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const category = e.target.category.value;
-    setSearchParams({ category, searchTerm });
+    const sort_by = e.target.sort_by.value;
+    setSearchParams({ category, searchTerm, sort_by });
   };
 
   return (
@@ -50,16 +51,20 @@ export default function Nav() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         ></input>
-        in{" "}
-        <select name="category" className="Nav__category-selector">
-          {categories.map(({ slug }) => {
-            return (
-              <option key={slug} value={slug}>
-                {slug}
-              </option>
-            );
-          })}
-        </select>
+        <label>
+          sort by
+          <select
+            placeholder="category..."
+            name="sort_by"
+            className="Nav__sort_by"
+            value={searchParams.get("sort_by")}
+            onChange={(e) => setSearchParams({ sort_by: e.target.value })}
+          >
+            <option value="created_at">date created</option>
+            <option value="comment_count">comment count</option>
+            <option value="votes">votes</option>
+          </select>
+        </label>
       </form>
     </nav>
   );

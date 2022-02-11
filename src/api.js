@@ -8,9 +8,9 @@ export function getCategories() {
   return api.get("/categories").then((res) => res.data.categories);
 }
 
-export function getReviews(category) {
+export function getReviews(category, sort_by) {
   const params = {
-    sort_by: "votes",
+    sort_by,
     order: "desc",
     category,
   };

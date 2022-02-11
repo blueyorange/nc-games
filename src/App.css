@@ -53,6 +53,7 @@
 
 .Nav__form {
   display: flex;
+  flex-wrap: nowrap;
   height: fit-content;
   align-items: baseline;
   flex-direction: row;
@@ -63,18 +64,13 @@
   background-color: white;
   font-size: 0.8em;
   box-shadow: 5px 3px #e6eed6;
-  width: 100%;
-}
-
-.Nav__form:focus {
-  outline: 2px solid #a72608;
 }
 
 .Nav__search-input {
   margin: 10px;
   border: none;
   height: 1.5em;
-  width: 300px;
+  width: 100px;
   font-size: inherit;
   color: grey;
   flex: 1;
@@ -99,20 +95,32 @@
   margin-left: 1em;
   font-size: inherit;
   color: grey;
+  background-color: white;
   margin-right: 0.5em;
 }
 
-.Nav__login-status {
+.Nav__sort_by {
+  border: none;
+  height: 1.5em;
+  margin-left: 1em;
+  font-size: inherit;
+  color: grey;
+  margin-right: 0.5em;
+  background-color: white;
+}
+
+.LoginStatus {
   text-align: right;
 }
 
-.Nav__login-user-image {
+.LoginStatus__user-image {
   width: 1.3em;
   height: 1.3em;
   margin-left: 0.3em;
   border-radius: 0.5em;
   vertical-align: middle;
 }
+
 .ReviewsList {
   display: flex;
   flex-wrap: wrap;
@@ -263,4 +271,14 @@
 
 button:hover {
   background-color: #a725089f;
+}
+
+button {
+  border: none;
+  padding: 0.7em 1.4em;
+  background-color: #a72608;
+  color: white;
+  border-radius: 4px;
+  width: fit-content;
+  margin: 0.5em 0.3em;
 }

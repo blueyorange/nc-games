@@ -10,11 +10,12 @@ export default function Reviews() {
 
   useEffect(() => {
     const category = searchParams.get("category");
+    const sort_by = searchParams.get("sort_by");
     const term =
       searchParams.get("searchTerm") === null
         ? ""
         : searchParams.get("searchTerm");
-    getReviews(category)
+    getReviews(category, sort_by)
       .then((reviews) =>
         reviews.filter(({ title }) => title.toLowerCase().includes(term))
       )
