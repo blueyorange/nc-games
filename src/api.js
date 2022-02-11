@@ -48,3 +48,7 @@ export function postComment(review_id, comment) {
     .post(`/reviews/${review_id}/comments`, comment)
     .then((res) => res.data.comments);
 }
+
+export function deleteComment(comment_id) {
+  return api.delete(`/comments/${comment_id}`);
+}

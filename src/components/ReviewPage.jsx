@@ -29,7 +29,6 @@ export default function ReviewPage() {
       <article className="ReviewPage__body">
         <p>{review.review_body}</p>
         <VoteButton votes={votes} updateApiFunc={voteReview} id={review_id} />
-        {votes}!!!
         <Comments review_id={review_id} />
       </article>
     </main>
