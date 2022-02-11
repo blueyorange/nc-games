@@ -198,6 +198,11 @@
 .Comment__header {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+}
+
+.Comment__header > * {
+  margin: 0 0.5em 0 0;
 }
 
 .Comment__image {

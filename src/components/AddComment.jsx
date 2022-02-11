@@ -18,7 +18,6 @@ export default function AddComment({ setComments }) {
         author: user.username,
         body: e.target.body.value,
       };
-      console.log(newComment);
       postComment(review_id, newComment).then((commentsFromApi) => {
         setComments(commentsFromApi);
         setShow(false);
