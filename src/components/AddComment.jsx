@@ -3,23 +3,28 @@ import { UserContext } from "../contexts/User";
 import { useParams } from "react-router-dom";
 import { postComment } from "../api";
 
-export default function AddComment() {
-  const [displayCommentForm, setDisplayCommentForm] = useState(false);
+export default function AddComment({ setComments }) {
+  const [showForm, setShowForm] = useState(false);
   const { review_id } = useParams();
 
-  function CommentForm({ comment }) {
+  function CommentForm({ setComments, setShow }) {
     const { user } = useContext(UserContext);
+    const [body, setBody] = useState("");
+
     const handleSubmitComment = (e) => {
       e.preventDefault();
-      comment = {
-        ...comment,
+      const newComment = {
         review_id,
         author: user.username,
         body: e.target.body.value,
       };
-      postComment(review_id, comment);
+      console.log(newComment);
+      postComment(review_id, newComment).then((commentsFromApi) => {
+        setComments(commentsFromApi);
+        setShow(false);
+      });
     };
-    const [body, setBody] = useState("");
+
     return (
       <form className="CommentForm__Form" onSubmit={handleSubmitComment}>
         <div className="Comment__header">
@@ -45,16 +50,16 @@ export default function AddComment() {
   }
 
   function AddCommentButton() {
-    return (
-      <button onClick={() => setDisplayCommentForm(!displayCommentForm)}>
-        Add Comment
-      </button>
-    );
+    return <button onClick={() => setShowForm(!showForm)}>Add Comment</button>;
   }
 
   return (
     <div className="AddComment">
-      {displayCommentForm ? <CommentForm /> : <AddCommentButton />}
+      {showForm ? (
+        <CommentForm setComments={setComments} setShow={setShowForm} />
+      ) : (
+        <AddCommentButton />
+      )}
     </div>
   );
 }

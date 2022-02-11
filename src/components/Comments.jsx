@@ -18,7 +18,7 @@ export default function Comments({ review_id }) {
       {comments.map((comment) => {
         return <Comment key={comment.comment_id} comment={comment}></Comment>;
       })}
-      <AddComment />
+      <AddComment setComments={setComments} />
     </div>
   );
 }

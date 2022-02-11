@@ -20,9 +20,10 @@ export default function Comment({ comment }) {
       <div className="Comment__header">
         <img alt={author} src={avatar_url} className="Comment__image"></img>
         <h4 className="Comment_owner">{author}</h4>
+        <p>{created_at}</p>
       </div>
-      <p>{comment.body}</p>
-      <button onClick={handleVote}>{votes}👍</button>
+      <p>{body}</p>
+      <button onClick={handleVote}>{votes} 👍</button>
     </article>
   );
 }
