@@ -37,6 +37,9 @@ export default function Nav() {
         ))}
       </ul>
       <form className="Nav__form" onSubmit={handleSubmit}>
+        {
+          // TODO: export to component
+        }
         <img
           alt="search icon"
           className="Nav__search-icon"
@@ -57,7 +60,7 @@ export default function Nav() {
             placeholder="category..."
             name="sort_by"
             className="Nav__sort_by"
-            value={searchParams.get("sort_by")}
+            value={searchParams.get("sort_by") || ""}
             onChange={(e) => setSearchParams({ sort_by: e.target.value })}
           >
             <option value="created_at">date created</option>
