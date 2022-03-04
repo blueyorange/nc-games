@@ -7,6 +7,7 @@ import UserPage from "./components/UserPage";
 import ReviewPage from "./components/ReviewPage";
 import { UserContext } from "./contexts/User";
 import LoginStatus from "./components/LoginStatus";
+import NotFound404 from "./components/NotFound404";
 
 function App() {
   const [user, setUser] = useState({
@@ -28,6 +29,7 @@ function App() {
             <Route path="/reviews/:category" element={<Reviews />} />
             <Route path="/users/:username" element={<UserPage />} />
             <Route path="/review/:review_id" element={<ReviewPage />} />
+            <Route path="*" element={<NotFound404 />} />
           </Routes>
         </div>
       </BrowserRouter>
