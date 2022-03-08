@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getReviews } from "../api";
 import Loading from "./Loading";
-import NotFound404 from "./NotFound404";
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
@@ -13,6 +12,11 @@ export default function Reviews() {
   const [error, setError] = useState();
 
   useEffect(() => {
+    setError();
+  }, [searchParams]);
+
+  useEffect(() => {
+    setError();
     setIsLoading(true);
     const category = searchParams.get("category");
     const sort_by = searchParams.get("sort_by");
@@ -27,17 +31,25 @@ export default function Reviews() {
       .then((filteredReviews) => {
         setReviews(filteredReviews);
         setIsLoading(false);
+        if (filteredReviews.length === 0) {
+          setError("404");
+        }
       })
-      .catch((err) => setError(err));
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err);
+      });
   }, [searchParams]);
-  if (error) {
-    return <NotFound404 />;
-  } else {
-    return (
-      <main className="Reviews">
-        <Nav />
-        {isLoading ? <Loading /> : <ReviewsList reviews={reviews} />}
-      </main>
-    );
-  }
+  return (
+    <main className="Reviews">
+      <Nav />
+      {isLoading ? (
+        <Loading />
+      ) : error ? (
+        <h2>No reviews found.</h2>
+      ) : (
+        <ReviewsList reviews={reviews} />
+      )}
+    </main>
+  );
 }

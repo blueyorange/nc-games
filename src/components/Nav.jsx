@@ -4,6 +4,7 @@ import { getCategories } from "../api";
 
 export default function Nav() {
   const [categories, setCategories] = useState([]);
+  const [sortBy, setSortBy] = useState();
   const [searchTerm, setSearchTerm] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -15,9 +16,8 @@ export default function Nav() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const sort_by = e.target.sort_by.value;
-    console.log(searchTerm);
-    setSearchParams({ searchTerm, sort_by });
+    console.log(sortBy);
+    setSearchParams({ searchTerm, sort_by: sortBy });
   };
 
   return (
@@ -61,13 +61,14 @@ export default function Nav() {
             name="sort_by"
             className="Nav__sort_by"
             value={searchParams.get("sort_by") || ""}
-            onChange={(e) => setSearchParams({ sort_by: e.target.value })}
+            onChange={(e) => setSortBy(e.target.value)}
           >
             <option value="created_at">date created</option>
             <option value="comment_count">comment count</option>
             <option value="votes">votes</option>
           </select>
         </label>
+        <button>Search</button>
       </form>
     </nav>
   );
