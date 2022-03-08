@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getReviews } from "../api";
 import Loading from "./Loading";
+import NotFound404 from "./NotFound404";
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
   const [searchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState();
 
   useEffect(() => {
     setIsLoading(true);
@@ -25,13 +27,17 @@ export default function Reviews() {
       .then((filteredReviews) => {
         setReviews(filteredReviews);
         setIsLoading(false);
-      });
+      })
+      .catch((err) => setError(err));
   }, [searchParams]);
-
-  return (
-    <main className="Reviews">
-      <Nav />
-      {isLoading ? <Loading /> : <ReviewsList reviews={reviews} />}
-    </main>
-  );
+  if (error) {
+    return <NotFound404 />;
+  } else {
+    return (
+      <main className="Reviews">
+        <Nav />
+        {isLoading ? <Loading /> : <ReviewsList reviews={reviews} />}
+      </main>
+    );
+  }
 }

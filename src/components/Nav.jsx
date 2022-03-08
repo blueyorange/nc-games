@@ -15,9 +15,9 @@ export default function Nav() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const category = e.target.category.value;
     const sort_by = e.target.sort_by.value;
-    setSearchParams({ category, searchTerm, sort_by });
+    console.log(searchTerm);
+    setSearchParams({ searchTerm, sort_by });
   };
 
   return (
