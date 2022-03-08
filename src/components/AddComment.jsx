@@ -36,6 +36,7 @@ export default function AddComment({ setComments }) {
         </div>
         <label>
           <textarea
+            required="true"
             type="text"
             className="CommentForm__textarea"
             value={body}
